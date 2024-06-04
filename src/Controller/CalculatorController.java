@@ -128,6 +128,7 @@ public class CalculatorController implements ActionListener {
             return false;
         }
     }
+    // Show the view
     public void showView() {
         view.setVisible(true);
     }

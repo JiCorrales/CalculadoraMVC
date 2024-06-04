@@ -31,6 +31,7 @@ public class CalculatorView extends JFrame {
             numberButtons[i].setFocusable(false);
         }
 
+        // Reference to the buttons
         addButton = new JButton("+");
         subButton = new JButton("-");
         mulButton = new JButton("*");
@@ -40,8 +41,10 @@ public class CalculatorView extends JFrame {
         clrButton = new JButton("C");
         delButton = new JButton("DEL");
 
+        // Array of function buttons
         JButton[] functionButtons = {addButton, subButton, mulButton, divButton, decButton, equButton, clrButton, delButton};
 
+        // Set the font and focusable for the function buttons
         for (JButton btn : functionButtons) {
             btn.setFont(new Font("Arial", Font.PLAIN, 30));
             btn.setFocusable(false);
@@ -79,10 +82,12 @@ public class CalculatorView extends JFrame {
         add(delButton);
     }
 
+    // Set the display value
     public void setDisplay(String value) {
         display.setText(value);
     }
 
+    // Get the display value
     public String getDisplay() {
         return display.getText();
     }

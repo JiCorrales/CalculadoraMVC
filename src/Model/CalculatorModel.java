@@ -26,9 +26,9 @@ public class CalculatorModel {
 
     // Add a number to the current input
     public void addNumber(String number) {
-//        System.out.println("Adding number: " + number);
+    // System.out.println("Adding number: " + number);
         currentNumber += number;
-//        System.out.println("Current number: " + currentNumber);
+    // System.out.println("Current number: " + currentNumber);
 
     }
 
@@ -67,9 +67,7 @@ public class CalculatorModel {
         currentOperation = "";
         currentNumber = String.valueOf(result);
     }
-    private boolean isValidExpression(){
-        return !currentNumber.isEmpty() && !currentOperation.isEmpty();
-    }
+
     // Get the current result
     public String getResult() {
         return currentNumber;
@@ -79,6 +77,7 @@ public class CalculatorModel {
     public String getCurrentNumber() {
         return currentNumber;
     }
+    // Get the current operation
     public String getCurrentOperation() {
         return currentOperation;
     }
