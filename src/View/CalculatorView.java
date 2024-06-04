@@ -1,13 +1,18 @@
 package View;
 
+//Andrey Navarro e Isaac Corrales
+
 import javax.swing.*;
 import java.awt.*;
 
 public class CalculatorView extends JFrame {
     private JTextField display;
-    public JButton[] numberButtons;
-    public JButton addButton, subButton, mulButton, divButton;
-    public JButton decButton, equButton, clrButton, delButton;
+
+
+
+    private JButton[] numberButtons;
+    private JButton addButton, subButton, mulButton, divButton;
+    private JButton decButton, equButton, clrButton, delButton;
 
     public CalculatorView() {
         // Frame settings
@@ -80,6 +85,84 @@ public class CalculatorView extends JFrame {
 
         add(clrButton);
         add(delButton);
+    }
+
+    // Getters and setters
+
+    public JButton getDelButton() {
+        return delButton;
+    }
+
+    public void setDelButton(JButton delButton) {
+        this.delButton = delButton;
+    }
+
+    public JButton getClrButton() {
+        return clrButton;
+    }
+
+    public void setClrButton(JButton clrButton) {
+        this.clrButton = clrButton;
+    }
+
+    public JButton getEquButton() {
+        return equButton;
+    }
+
+    public void setEquButton(JButton equButton) {
+        this.equButton = equButton;
+    }
+
+    public JButton getDecButton() {
+        return decButton;
+    }
+
+    public void setDecButton(JButton decButton) {
+        this.decButton = decButton;
+    }
+
+    public JButton getDivButton() {
+        return divButton;
+    }
+
+    public void setDivButton(JButton divButton) {
+        this.divButton = divButton;
+    }
+
+    public JButton getMulButton() {
+        return mulButton;
+    }
+
+    public void setMulButton(JButton mulButton) {
+        this.mulButton = mulButton;
+    }
+
+    public JButton getSubButton() {
+        return subButton;
+    }
+
+    public void setSubButton(JButton subButton) {
+        this.subButton = subButton;
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(JButton addButton) {
+        this.addButton = addButton;
+    }
+
+    public JButton[] getNumberButtons() {
+        return numberButtons;
+    }
+
+    public void setNumberButtons(JButton[] numberButtons) {
+        this.numberButtons = numberButtons;
+    }
+
+    public void setDisplay(JTextField display) {
+        this.display = display;
     }
 
     // Set the display value

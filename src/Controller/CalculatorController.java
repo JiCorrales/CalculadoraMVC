@@ -1,5 +1,7 @@
 package Controller;
 
+//Andrey Navarro e Isaac Corrales
+
 import Model.CalculatorModel;
 import View.CalculatorView;
 import java.awt.event.ActionEvent;
@@ -27,18 +29,18 @@ public class CalculatorController implements ActionListener {
     private void _init_() {
         // Register listeners for all number buttons
         for (int i = 0; i < 10; i++) {
-            view.numberButtons[i].addActionListener(this);
+            view.getNumberButtons()[i].addActionListener(this);
         }
 
         // Register listeners for operation buttons
-        view.addButton.addActionListener(this);
-        view.subButton.addActionListener(this);
-        view.mulButton.addActionListener(this);
-        view.divButton.addActionListener(this);
-        view.decButton.addActionListener(this);
-        view.equButton.addActionListener(this);
-        view.clrButton.addActionListener(this);
-        view.delButton.addActionListener(this);
+        view.getAddButton().addActionListener(this);
+        view.getSubButton().addActionListener(this);
+        view.getMulButton().addActionListener(this);
+        view.getDivButton().addActionListener(this);
+        view.getDecButton().addActionListener(this);
+        view.getEquButton().addActionListener(this);
+        view.getClrButton().addActionListener(this);
+        view.getDelButton().addActionListener(this);
 
     }
 
@@ -120,7 +122,7 @@ public class CalculatorController implements ActionListener {
     }
 
     // Helper method to check if a string is a number
-    boolean isNumber(String v) {
+    private boolean isNumber(String v) {
         try {
             Double.parseDouble(v);
             return true;
@@ -133,5 +135,5 @@ public class CalculatorController implements ActionListener {
         view.setVisible(true);
     }
 
-   
+
 }

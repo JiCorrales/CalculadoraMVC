@@ -1,5 +1,7 @@
 package Model;
 
+//Andrey Navarro e Isaac Corrales
+
 public class CalculatorModel {
     private double result;
     private String currentNumber;
