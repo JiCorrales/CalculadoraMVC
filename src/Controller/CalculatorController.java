@@ -23,7 +23,7 @@ public class CalculatorController implements ActionListener, MouseListener {
         createActionsMap();
     }
 
-    // Inicia el binding con la vista
+    // Start the binding with the view
     private void _init_() {
         // Register listeners for all number buttons
         for (int i = 0; i < 10; i++) {
@@ -52,7 +52,15 @@ public class CalculatorController implements ActionListener, MouseListener {
         view.delButton.addMouseListener(this);
     }
 
-    // Create a map to associate button texts with corresponding actions
+    /**
+     *      So here we are creating a map of actions that will be executed when a button is pressed
+     *      This is a way to avoid a long chain of if-else statements
+     *      The key is the button text and the value is a Runnable that will be executed when the button is pressed
+     *      So we think that this is a good way to handle the actions of the buttons
+     *      Because we can easily add new actions, and we can easily see what action is executed when a button is pressed
+     *      And it looks cleaner than a long chain of if-else statements
+     */
+
     private void createActionsMap() {
         actionsMap = new HashMap<>();
         actionsMap.put("+", () -> operationButtonPressed("+"));
