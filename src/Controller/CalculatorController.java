@@ -4,16 +4,16 @@ import Model.CalculatorModel;
 import View.CalculatorView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import javax.swing.JButton;
 import java.util.HashMap;
-import java.util.Map;
 
-public class CalculatorController implements ActionListener, MouseListener {
-    private CalculatorModel model;
-    private CalculatorView view;
-    private Map<String, Runnable> actionsMap;
+
+
+public class CalculatorController implements ActionListener {
+    private final CalculatorModel model;
+    private final CalculatorView view;
+    private HashMap<String, Runnable> actionsMap;
 
     // Constructor
     public CalculatorController(CalculatorModel model, CalculatorView view) {
@@ -28,7 +28,6 @@ public class CalculatorController implements ActionListener, MouseListener {
         // Register listeners for all number buttons
         for (int i = 0; i < 10; i++) {
             view.numberButtons[i].addActionListener(this);
-            view.numberButtons[i].addMouseListener(this);
         }
 
         // Register listeners for operation buttons
@@ -41,15 +40,6 @@ public class CalculatorController implements ActionListener, MouseListener {
         view.clrButton.addActionListener(this);
         view.delButton.addActionListener(this);
 
-        // Register mouse listeners for operation buttons
-        view.addButton.addMouseListener(this);
-        view.subButton.addMouseListener(this);
-        view.mulButton.addMouseListener(this);
-        view.divButton.addMouseListener(this);
-        view.decButton.addMouseListener(this);
-        view.equButton.addMouseListener(this);
-        view.clrButton.addMouseListener(this);
-        view.delButton.addMouseListener(this);
     }
 
     /**
@@ -73,6 +63,7 @@ public class CalculatorController implements ActionListener, MouseListener {
         actionsMap.put("DEL", this::deleteButtonPressed);
     }
 
+    // Handle button clicks
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
@@ -88,18 +79,19 @@ public class CalculatorController implements ActionListener, MouseListener {
         }
     }
 
+    // Handle mouse events
     private void numberButtonPressed(String number) {
         String currentDisplay = view.getDisplay();
         currentDisplay += number;
         view.setDisplay(currentDisplay);
         model.addNumber(number);
     }
-
+    // Handle mouse events
     private void operationButtonPressed(String operation) {
         model.setOperation(operation);
         view.setDisplay("");
     }
-
+    // Handle mouse events
     private void decimalButtonPressed() {
         String currentDisplay = view.getDisplay();
         if (!currentDisplay.contains(".")) {
@@ -108,17 +100,20 @@ public class CalculatorController implements ActionListener, MouseListener {
             model.addNumber(".");
         }
     }
-
+    // Handle mouse events
     private void equalsButtonPressed() {
+        if (model.getCurrentOperation().isEmpty()) {
+            return;
+        }
         model.calculate();
         view.setDisplay(model.getResult());
     }
-
+    // Handle mouse events
     private void clearButtonPressed() {
         model.clear();
         view.setDisplay("");
     }
-
+    // Handle mouse events
     private void deleteButtonPressed() {
         model.deleteLastInput();
         view.setDisplay(model.getCurrentNumber());
@@ -133,37 +128,9 @@ public class CalculatorController implements ActionListener, MouseListener {
             return false;
         }
     }
-
     public void showView() {
         view.setVisible(true);
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        System.out.println("Se presionó el botón " + btn.getText());
-    }
-    @Override
-    public void mousePressed(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        System.out.println("Se presionó el botón " + btn.getText());
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        System.out.println("Se soltó el botón " + btn.getText());
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        System.out.println("Mouse sobre el botón " + btn.getText());
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        System.out.println("Mouse salió de sobre el botón " + btn.getText());
-    }
+   
 }

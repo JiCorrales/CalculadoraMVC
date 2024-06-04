@@ -19,13 +19,17 @@ public class CalculatorModel {
     // Delete last input
     public void deleteLastInput() {
         if (!currentNumber.isEmpty()) {
+            // Remove the last character from the current number
             currentNumber = currentNumber.substring(0, currentNumber.length() - 1);
         }
     }
 
     // Add a number to the current input
     public void addNumber(String number) {
+//        System.out.println("Adding number: " + number);
         currentNumber += number;
+//        System.out.println("Current number: " + currentNumber);
+
     }
 
     // Set the operation to be performed
@@ -63,7 +67,9 @@ public class CalculatorModel {
         currentOperation = "";
         currentNumber = String.valueOf(result);
     }
-
+    private boolean isValidExpression(){
+        return !currentNumber.isEmpty() && !currentOperation.isEmpty();
+    }
     // Get the current result
     public String getResult() {
         return currentNumber;
@@ -73,5 +79,9 @@ public class CalculatorModel {
     public String getCurrentNumber() {
         return currentNumber;
     }
+    public String getCurrentOperation() {
+        return currentOperation;
+    }
+
 }
 
